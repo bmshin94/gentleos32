@@ -318,7 +318,8 @@ def main():
     parser = argparse.ArgumentParser(description="Create initial RAM disk for GentleOS/32")
     parser.add_argument("files", nargs="*", help="files to add")
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument("--disk-image", metavar="PATH", help="disk image to install initrd into")
+    group.add_argument("-d", dest="disk_image", metavar="PATH",
+        help="disk image to install initrd into")
     group.add_argument("-o", "--output", metavar="PATH", help="path to save the initrd to")
     parser.add_argument("--pad", action="store_true",
         help="pad the native disk image to a whole cylinder, as required by emulators")

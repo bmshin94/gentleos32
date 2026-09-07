@@ -41,7 +41,7 @@ using an initial RAM disk (initrd).
 To create one and install in a disk image, run:
 
 ```bash
-uv run tools/mkinitrd.py [FILES] --disk-image gentleos32-disk.img
+uv run tools/mkinitrd.py [FILES] -d gentleos32-disk.img
 ```
 
 ## Adding wallpapers
