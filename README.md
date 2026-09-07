@@ -56,21 +56,26 @@ to save the initrd to a file, instead of installing it in a disk image.
 
 ## Adding wallpapers
 
-To add a wallpaper, save it in PNG/JPG/GIF/BMP/PPM format
-and [add to initrd](#adding-files).
+To add a wallpaper, save it in PNG/JPG/GIF/BMP/PPM format,
+[add to initrd](#adding-files) and select in settings.
 
-The image must match your screen resolution.
+Three kinds of wallpapers are supported:
 
-The image will be automatically converted to 256-color mode.
+- Monochrome - B&W images are stored as 1bpp to save memory and
+  rendered using colors editable in settings. They're tiled,
+  and their width must be a multiple of 8.
 
-In planar video mode (the default one), it'll be displayed using only 16 colors.
+- Color - regular images are converted to 8bpp, and only available if
+  they match your screen resolution.
+
+- Pixel art - images of exactly 64x43px are scaled and rendered in a grid.
+  They're also converted to 8bpp and only supported in 640x480 video mode.
+
+In planar video mode (the default one), color and pixel art
+wallpapers are supported but only rendered using the first 16 colors.
 
 For best results, in GIMP you can use an indexed mode with the provided
 [256-color](misc/vga-256.gpl) and [16-color](misc/vga-16.gpl) palettes.
-
-In the special case where the image is black and white, it'll be stored
-in 1bpp mode to conserve memory, and it'll be rendered using colors
-editable in settings.
 
 ## Adding songs
 
