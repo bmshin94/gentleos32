@@ -57,7 +57,7 @@ to save the initrd to a file, instead of installing it in a disk image.
 ## Adding wallpapers
 
 To add a wallpaper, save it in PNG/JPG/GIF/BMP/PPM format
-and add to initrd.
+and [add to initrd](#adding-files).
 
 The image must match your screen resolution.
 
@@ -75,7 +75,7 @@ editable in settings.
 ## Adding songs
 
 To add a song, save it as an uncompressed MusicXML file,
-convert to the custom SPK format, and add to initrd:
+convert to the custom SPK format, and [add to initrd](#adding-files):
 
 ```bash
 uv run tools/mkspk.py -i song.musicxml -o song.spk
