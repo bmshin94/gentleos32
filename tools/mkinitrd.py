@@ -320,7 +320,8 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-d", dest="disk_image", metavar="PATH",
         help="disk image to install initrd into")
-    group.add_argument("-o", "--output", metavar="PATH", help="path to save the initrd to")
+    group.add_argument("-o", dest="output", metavar="PATH",
+        help="path to save the initrd to")
     parser.add_argument("-p", dest="pad", action="store_true",
         help="pad the native disk image to a whole cylinder, as required by emulators")
     args = parser.parse_args()
