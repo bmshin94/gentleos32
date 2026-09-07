@@ -35,14 +35,24 @@ The easiest way to test is to open `gentleos32-web.html` in a browser.
 
 ## Adding files
 
-Additional assets like wallpapers and songs can be provided
-using an initial RAM disk (initrd).
+Additional assets like wallpapers and songs can be provided using
+an initial RAM disk (initrd).
 
-To create one and install in a disk image, run:
+To create an initrd and automatically install in a disk image, run:
 
 ```bash
-uv run tools/mkinitrd.py [FILES] -d gentleos32-disk.img
+uv run tools/mkinitrd.py [FILES] -d gentleos32-base.img
 ```
+
+Both native and GRUB images are supported, the latter require the
+`mtools` package to be installed.
+
+Certain emulators, including v86, only accept disk images which follow
+geometry of physical disks. Use option `-p` to automatically pad the final
+image with zeros to the right size.
+
+If you already have GRUB installed on a physical disk, use option `-o PATH`
+to save the initrd to a file, instead of installing it in a disk image.
 
 ## Adding wallpapers
 
