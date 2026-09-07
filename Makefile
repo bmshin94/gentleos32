@@ -77,10 +77,10 @@ disks: $(KERNEL_HIMEM_BIN) $(KERNEL_LOMEM_BIN) $(BOOT_BIN)
 	./tools/mkdisk.pl $(BOOT_BIN) $(KERNEL_LOMEM_BIN) $(BASE_IMAGE)
 
 	cp $(BASE_IMAGE) $(EMU_IMAGE)
-	./tools/mkinitrd.py $(INITRD_OBJS) -d $(EMU_IMAGE) --pad
+	./tools/mkinitrd.py $(INITRD_OBJS) -d $(EMU_IMAGE) -p
 
 	./tools/mkdisk.pl $(BOOT_BIN) $(KERNEL_LOMEM_BIN) $(WEB_IMAGE) no-menu uart-debug
-	./tools/mkinitrd.py $(INITRD_OBJS) -d $(WEB_IMAGE) --pad
+	./tools/mkinitrd.py $(INITRD_OBJS) -d $(WEB_IMAGE) -p
 	./tools/mkemu.py $(WEB_IMAGE) $(WEB_PAGE)
 
 	zcat $(BASEDIR)/misc/grub-disk.img.gz > $(GRUB_IMAGE)
