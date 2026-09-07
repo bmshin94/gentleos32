@@ -310,7 +310,6 @@ def install_initrd(disk_image_path, initrd, initrd_path, pad):
 def main():
     parser = argparse.ArgumentParser(description="Create initial RAM disk for GentleOS/32")
     parser.add_argument("files", nargs="*", help="files to add")
-    parser.add_argument("--wallpaper", metavar="PATH", help="image to use as the wallpaper")
     parser.add_argument("--disk-image", metavar="PATH", help="disk image to install initrd into")
     parser.add_argument("-o", "--output", metavar="PATH", default=INITRD_PATH,
         help="path to save the initrd to (default: %s)" % INITRD_PATH)
@@ -322,14 +321,6 @@ def main():
 
     for path in expand_paths(args.files):
         files.append(load_file(path))
-
-    if args.wallpaper is not None:
-        data = process_image(args.wallpaper)
-        files.append({
-            "name": "wallpaper",
-            "type": FILE_TYPE_BITMAP,
-            "data": data,
-        })
 
     if not files:
         parser.print_usage()
