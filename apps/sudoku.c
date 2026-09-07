@@ -179,7 +179,7 @@ update_status(void)
     gui_status_set("Solved, good job!  \xb3  %s", ng);
 }
 
-static void
+static void _unsd
 shuffle_byte_array(uint8_t *values, int count)
 {
     int i, j;
@@ -200,7 +200,7 @@ solver_box_index(int col, int row)
     return (row / GRID_BOX_SIZE) * GRID_BOX_SIZE + col / GRID_BOX_SIZE;
 }
 
-static void
+static void _unsd
 solver_set_digit(int col, int row, int digit)
 {
     solver_st *s = &app_state->solver;
@@ -213,7 +213,7 @@ solver_set_digit(int col, int row, int digit)
     s->box_mask[box] |= bit;
 }
 
-static void
+static void _unsd
 solver_clear_digit(int col, int row, int digit)
 {
     solver_st *s = &app_state->solver;
@@ -226,7 +226,7 @@ solver_clear_digit(int col, int row, int digit)
     s->box_mask[box] &= ~bit;
 }
 
-static uint16_t
+static uint16_t _unsd
 solver_allowed_digits(int col, int row)
 {
     solver_st *s = &app_state->solver;
@@ -236,7 +236,7 @@ solver_allowed_digits(int col, int row)
     return ~used & SOLVER_DIGIT_MASK_FULL;
 }
 
-static int
+static int _unsd
 solver_count_allowed_digits(uint16_t mask)
 {
     int count = 0;
