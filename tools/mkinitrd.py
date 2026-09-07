@@ -19,6 +19,7 @@ import os
 import re
 import shutil
 import struct
+import tempfile
 
 MAGIC        = b"IRD1"
 NAME_LEN     = 31
@@ -41,8 +42,6 @@ PALETTE_REX  = re.compile(r"^\s*(\d+)\s+(\d+)\s+(\d+)\s+\$([0-9a-fA-F]+)\s*$")
 
 SPK_NOTE_REX   = re.compile(r"^\s*(\d+)\s*,\s*(\d+)\s*$")
 SPK_META_REX   = re.compile(r"^\s*(\w+)\s*:\s*(.+?)\s*$")
-
-INITRD_PATH  = "gentleos.rd"
 
 SECTOR_LEN    = 512
 FS_OFFSET     = 1048576
@@ -285,16 +284,24 @@ def install_initrd_native(disk_image_path, image, initrd, pad):
     print("Initrd installed in %s" % disk_image_path)
 
 
-def install_initrd_grub(disk_image_path, initrd_path):
+def install_initrd_grub(disk_image_path, initrd):
     if not shutil.which("mcopy"):
         die("Error: mkinitrd.py requires 'mtools' package to install initrd in a disk image")
 
-    cmd = "mcopy -D o -i '%s@@%d' %s ::gentleos.rd" % (disk_image_path, FS_OFFSET, initrd_path)
-    print("Running %s" % cmd)
-    os.system(cmd)
+    fd, initrd_path = tempfile.mkstemp(suffix=".rd")
+
+    try:
+        with os.fdopen(fd, "wb") as f:
+            f.write(initrd)
+
+        cmd = "mcopy -D o -i '%s@@%d' %s ::gentleos.rd" % (disk_image_path, FS_OFFSET, initrd_path)
+        print("Running %s" % cmd)
+        os.system(cmd)
+    finally:
+        os.unlink(initrd_path)
 
 
-def install_initrd(disk_image_path, initrd, initrd_path, pad):
+def install_initrd(disk_image_path, initrd, pad):
     if not os.path.exists(disk_image_path):
         die("Error: disk image not found")
 
@@ -304,15 +311,15 @@ def install_initrd(disk_image_path, initrd, initrd_path, pad):
     if is_native_image(image):
         install_initrd_native(disk_image_path, image, initrd, pad)
     else:
-        install_initrd_grub(disk_image_path, initrd_path)
+        install_initrd_grub(disk_image_path, initrd)
 
 
 def main():
     parser = argparse.ArgumentParser(description="Create initial RAM disk for GentleOS/32")
     parser.add_argument("files", nargs="*", help="files to add")
-    parser.add_argument("--disk-image", metavar="PATH", help="disk image to install initrd into")
-    parser.add_argument("-o", "--output", metavar="PATH", default=INITRD_PATH,
-        help="path to save the initrd to (default: %s)" % INITRD_PATH)
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--disk-image", metavar="PATH", help="disk image to install initrd into")
+    group.add_argument("-o", "--output", metavar="PATH", help="path to save the initrd to")
     parser.add_argument("--pad", action="store_true",
         help="pad the native disk image to a whole cylinder, as required by emulators")
     args = parser.parse_args()
@@ -329,13 +336,14 @@ def main():
     print("Generating initrd:")
     image = build_initrd(files)
 
-    with open(args.output, "wb") as f:
-        f.write(image)
+    if args.output is not None:
+        with open(args.output, "wb") as f:
+            f.write(image)
 
-    print(f"Initrd saved to {args.output}")
+        print(f"Initrd saved to {args.output}")
 
     if args.disk_image is not None:
-        install_initrd(args.disk_image, image, args.output, args.pad)
+        install_initrd(args.disk_image, image, args.pad)
 
 
 if __name__ == "__main__":
