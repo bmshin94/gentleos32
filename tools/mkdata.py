@@ -58,6 +58,7 @@ PREFIXES = {
     "assets/sprites": "sprite_",
     "assets/mahjong": "sprite_mj_",
     "vendor/mona": "glyph_mn_",
+    "vendor/squidfng": "bitmap_pattern_sf_",
 }
 
 
@@ -118,6 +119,7 @@ def process_bitmaps():
         + glob.glob("assets/sprites/*.pbm")
         + glob.glob("vendor/icons8/*.pbm")
         + glob.glob("vendor/mona/*.pbm")
+        + glob.glob("vendor/squidfng/*.pbm")
     )
 
     return "\n".join(process_pbm(f) for f in pbm_files)

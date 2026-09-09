@@ -16,7 +16,7 @@ enum {
     PATTERN_COLS = 6,
     PATTERN_ROWS = 3,
     PATTERN_CELL_WIDTH = 32,
-    PATTERN_CELL_HEIGHT = 24,
+    PATTERN_CELL_HEIGHT = 28,
     PATTERN_COUNT = (PATTERN_COLS * PATTERN_ROWS),
     PATTERN_GRID_WIDTH = GRID_WIDTH_SPACED(PATTERN_CELL_WIDTH, PATTERN_COLS, GRID_BORDER),
     PATTERN_GRID_HEIGHT = GRID_HEIGHT_SPACED(PATTERN_CELL_HEIGHT, PATTERN_ROWS, GRID_BORDER),
@@ -38,7 +38,7 @@ enum {
     THEME_GRID_HEIGHT = GRID_HEIGHT_SPACED(THEME_CELL_HEIGHT, THEME_ROWS, GRID_BORDER),
 
     WALLPAPER_COLS = 1,
-    WALLPAPER_ROWS = 7,
+    WALLPAPER_ROWS = 8,
     WALLPAPER_CELL_HEIGHT = THEME_CELL_HEIGHT,
     WALLPAPER_CELL_WIDTH = THEME_CELL_WIDTH,
     WALLPAPER_GRID_WIDTH = GRID_WIDTH_SPACED(WALLPAPER_CELL_WIDTH, WALLPAPER_COLS, GRID_BORDER),
@@ -60,7 +60,7 @@ enum {
     PATTERN_GRID_X = RIGHT_COLUMN_X,
     PATTERN_GRID_Y = PATTERN_LABEL_Y + LABEL_HEIGHT + LABEL_SPACING,
 
-    COLOR1_LABEL_Y = PATTERN_GRID_Y + PATTERN_GRID_HEIGHT + PADDING + 5,
+    COLOR1_LABEL_Y = PATTERN_GRID_Y + PATTERN_GRID_HEIGHT + PADDING + 11,
     COLOR1_GRID_X = RIGHT_COLUMN_X,
     COLOR1_GRID_Y = COLOR1_LABEL_Y + LABEL_HEIGHT + LABEL_SPACING,
 
@@ -118,12 +118,12 @@ static bitmap_st *patterns[] = {
     &bitmap_pattern_09,
     &bitmap_pattern_10,
     &bitmap_pattern_11,
-    &bitmap_pattern_12,
-    &bitmap_pattern_13,
-    &bitmap_pattern_14,
-    &bitmap_pattern_15,
-    &bitmap_pattern_16,
-    NULL,
+    &bitmap_pattern_sf_152,
+    &bitmap_pattern_sf_026,
+    &bitmap_pattern_sf_029,
+    &bitmap_pattern_sf_030,
+    &bitmap_pattern_sf_103,
+    &bitmap_pattern_sf_108,
 };
 
 static const char *theme_names[THEME_COUNT] = {
