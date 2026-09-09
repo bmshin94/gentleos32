@@ -182,7 +182,7 @@ def process_spk(path):
 def load_file(path):
     [basename, ext] = split_ext(path)
 
-    if ext in  ["jpg", "jpeg", "png", "ppm", "gif", "bmp"]:
+    if ext in  ["jpg", "jpeg", "png", "pbm", "ppm", "gif", "bmp"]:
         name = basename
         file_type = FILE_TYPE_BITMAP
         data = process_image(path)

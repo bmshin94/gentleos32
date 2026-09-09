@@ -56,7 +56,7 @@ to save the initrd to a file, instead of installing it in a disk image.
 
 ## Adding wallpapers
 
-To add a wallpaper, save it in PNG/JPG/GIF/BMP/PPM format,
+To add a wallpaper, save it in PNG/JPG/GIF/BMP/PBM/PPM format,
 [add to initrd](#adding-files) and select in settings.
 
 Three kinds of wallpapers are supported:
