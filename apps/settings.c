@@ -224,6 +224,44 @@ load_wallpapers(void)
 }
 
 static void
+set_desktop_color1(int color)
+{
+    app_state_st *a = app_state;
+
+    widget_st *prev = a->active_color1_button;
+    widget_st *widget = &a->color1_buttons[color];
+
+    a->active_color1_button = widget;
+
+    gui_theme.desktop = color;
+
+    if (prev && prev != widget) {
+        gui_widget_draw(prev);
+    }
+
+    gui_widget_draw(widget);
+}
+
+static void
+set_desktop_color2(int color)
+{
+    app_state_st *a = app_state;
+
+    widget_st *prev = a->active_color2_button;
+    widget_st *widget = &a->color2_buttons[color];
+
+    a->active_color2_button = widget;
+
+    gui_theme.desktop_alt = color;
+
+    if (prev && prev != widget) {
+        gui_widget_draw(prev);
+    }
+
+    gui_widget_draw(widget);
+}
+
+static void
 set_wallpaper(bitmap_st *bitmap)
 {
     if (bitmap == gui_wm_wallpaper) {
@@ -231,6 +269,11 @@ set_wallpaper(bitmap_st *bitmap)
     }
 
     gui_wm_wallpaper = bitmap;
+
+    /* Pixel art usually works best with black grid */
+    if (bitmap && gui_wm_is_valid_pixelart(bitmap)) {
+        set_desktop_color1(0);
+    }
 
     select_active_pattern_button();
     select_active_wallpaper_item();
@@ -322,18 +365,7 @@ draw_color_button(widget_st *widget)
 static void
 on_color1_button_press(widget_st *widget, event_st event _unsd, point_st pos _unsd)
 {
-    app_state_st *a = app_state;
-
-    widget_st *prev = a->active_color1_button;
-    a->active_color1_button = widget;
-
-    gui_theme.desktop = widget->tag2;
-
-    if (prev && prev != widget) {
-        gui_widget_draw(prev);
-    }
-
-    gui_widget_draw(widget);
+    set_desktop_color1(widget->tag2);
 
     gui_wm_render_desktop_region(gui_wm_container, NULL);
 }
@@ -341,18 +373,7 @@ on_color1_button_press(widget_st *widget, event_st event _unsd, point_st pos _un
 static void
 on_color2_button_press(widget_st *widget, event_st event _unsd, point_st pos _unsd)
 {
-    app_state_st *a = app_state;
-
-    widget_st *prev = a->active_color2_button;
-    a->active_color2_button = widget;
-
-    gui_theme.desktop_alt = widget->tag2;
-
-    if (prev && prev != widget) {
-        gui_widget_draw(prev);
-    }
-
-    gui_widget_draw(widget);
+    set_desktop_color2(widget->tag2);
 
     gui_wm_render_desktop_region(gui_wm_container, NULL);
 }
