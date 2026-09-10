@@ -23,6 +23,7 @@ global app_st *gui_apps[] = {
     &app_tetris,
     &app_pairs,
     &app_mahjong,
+    &app_2048,
     &app_freecell,
     &app_klondike,
     &app_blackjack,

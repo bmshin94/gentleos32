@@ -1,4 +1,5 @@
 /* build/data.c */
+extern bitmap_st icon_2048;
 extern bitmap_st icon_blackjack;
 extern bitmap_st icon_freecell;
 extern bitmap_st icon_github;
