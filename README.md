@@ -65,8 +65,7 @@ Three kinds of wallpapers are supported:
   rendered using colors editable in settings. They're tiled,
   and their width must be a multiple of 8.
 
-- Color - regular images are converted to 8bpp, and only available if
-  they match your screen resolution.
+- Color - regular images are converted to 8bpp and tiled.
 
 - Pixel art - images of exactly 64x43px are scaled and rendered in a grid.
   They're also converted to 8bpp and only supported in 640x480 video mode.

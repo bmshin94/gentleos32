@@ -143,11 +143,9 @@ gui_wm_is_valid_pixelart(bitmap_st *b)
 }
 
 global int
-gui_wm_is_valid_image(bitmap_st *b)
+gui_wm_is_valid_tile(bitmap_st *b)
 {
-    system_info_st *si = &krn_system_info;
-
-    return b->bpp == 8 && b->size.width == si->fb_width && b->size.height == si->fb_height;
+    return b->bpp == 8 && b->size.width > 0 && b->size.height > 0;
 }
 
 global int
@@ -156,7 +154,7 @@ gui_wm_is_valid_wallpaper(bitmap_st *b)
     return 0
         || gui_wm_is_valid_pattern(b)
         || gui_wm_is_valid_pixelart(b)
-        || gui_wm_is_valid_image(b);
+        || gui_wm_is_valid_tile(b);
 }
 
 static void
@@ -170,8 +168,8 @@ gui_wm_render_wallpaper(rect_st rect)
         gui_fb_draw_pattern(rect, gui_wm_wallpaper, COLOR_DESKTOP_ALT, COLOR_DESKTOP);
     } else if (gui_wm_is_valid_pixelart(gui_wm_wallpaper)) {
         gui_fb_draw_pixelart(rect, gui_wm_wallpaper);
-    } else if (gui_wm_is_valid_image(gui_wm_wallpaper)) {
-        gui_fb_draw_image(rect, gui_wm_wallpaper);
+    } else if (gui_wm_is_valid_tile(gui_wm_wallpaper)) {
+        gui_fb_draw_tiles(rect, gui_wm_wallpaper);
     }
 
     gui_fb_draw_end();
@@ -184,7 +182,7 @@ gui_wm_render_window_surface(window_st *window, rect_st desktop_reg)
     rect_st window_reg = gui_rect_translate_back(desktop_reg, window->rect.pos);
 
     gui_fb_draw_start();
-    gui_fb_draw_surface(desktop_reg.x, desktop_reg.y, window->surface, window_reg);
+    gui_fb_draw_surface(desktop_reg.x, desktop_reg.y, window->surface, window_reg, 1);
     gui_fb_draw_end();
 }
 

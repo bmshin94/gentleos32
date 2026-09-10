@@ -107,7 +107,7 @@ gui_fb_draw_pattern(rect_st rect, bitmap_st *pattern, uint8_t c1, uint8_t c2)
 }
 
 global void
-gui_fb_draw_surface(int dst_x, int dst_y, surface_st *src_sf, rect_st src_rect)
+gui_fb_draw_surface(int dst_x, int dst_y, surface_st *src_sf, rect_st src_rect, int mark_dirty)
 {
     if (krn_system_info.fb_planar) {
         gui_planar_draw_surface(dst_x, dst_y, src_sf, src_rect);
@@ -115,19 +115,37 @@ gui_fb_draw_surface(int dst_x, int dst_y, surface_st *src_sf, rect_st src_rect)
         gui_surface_copy(&gui_fb_surface, dst_x, dst_y, src_sf, src_rect);
     }
 
-    gui_fb_mark_dirty(gui_rect_make(dst_x, dst_y, src_rect.width, src_rect.height));
+    if (mark_dirty) {
+        gui_fb_mark_dirty(gui_rect_make(dst_x, dst_y, src_rect.width, src_rect.height));
+    }
 }
 
 global void
-gui_fb_draw_image(rect_st rect, bitmap_st *bitmap)
+gui_fb_draw_tiles(rect_st rect, bitmap_st *bmp)
 {
     surface_st surface;
+    rect_st bmp_rect;
+    int bmp_w = bmp->size.width;
+    int bmp_h = bmp->size.height;
+    int x, y;
 
-    surface.size = bitmap->size;
-    surface.pitch = bitmap->pitch;
-    surface.pixels = (uint8_t *)bitmap->pixels;
+    surface.size = bmp->size;
+    surface.pitch = bmp->pitch;
+    surface.pixels = (uint8_t *)bmp->pixels;
 
-    gui_fb_draw_surface(rect.x, rect.y, &surface, rect);
+    for (y = rect.y; y < rect.y + rect.height; y += bmp_rect.height) {
+        bmp_rect.y = y % bmp_h;
+        bmp_rect.height = MIN(bmp_h - bmp_rect.y, rect.y + rect.height - y);
+
+        for (x = rect.x; x < rect.x + rect.width; x += bmp_rect.width) {
+            bmp_rect.x = x % bmp_w;
+            bmp_rect.width = MIN(bmp_w - bmp_rect.x, rect.x + rect.width - x);
+
+            gui_fb_draw_surface(x, y, &surface, bmp_rect, 0);
+        }
+    }
+
+    gui_fb_mark_dirty(rect);
 }
 
 global void
