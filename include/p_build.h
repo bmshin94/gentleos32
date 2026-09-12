@@ -67,7 +67,6 @@ extern bitmap_st icon_fonts;
 extern bitmap_st icon_keys;
 extern bitmap_st icon_snake;
 extern bitmap_st icon_sounds;
-extern bitmap_st bitmap_pattern_a;
 extern bitmap_st glyph_mn_bbchick;
 extern bitmap_st glyph_mn_bbchick_2x;
 extern bitmap_st glyph_mn_beaver_2x;

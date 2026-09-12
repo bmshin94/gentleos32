@@ -118,7 +118,6 @@ def process_bitmaps():
         + glob.glob("assets/sprites/*.pbm")
         + glob.glob("vendor/icons8/*.pbm")
         + glob.glob("vendor/mona/*.pbm")
-        + ["vendor/misc/pattern_a.pbm"]
     )
 
     return "\n".join(process_pbm(f) for f in pbm_files)
@@ -217,7 +216,10 @@ def process_builtin_file_entry(index, f):
 def process_builtin_files():
     paths = sorted([]
         + glob.glob("build/assets/songs/*.spk")
-        + ["vendor/misc/Sunset.png"]
+        + [
+            "vendor/misc/Sunset.png",
+            "vendor/anthicon/Cyber Tiles.pbm",
+        ]
     )
 
     if not paths:

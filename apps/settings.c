@@ -123,7 +123,7 @@ static bitmap_st *patterns[] = {
     &bitmap_pattern_14,
     &bitmap_pattern_15,
     &bitmap_pattern_16,
-    &bitmap_pattern_a,
+    NULL,
 };
 
 static const char *theme_names[THEME_COUNT] = {
@@ -324,10 +324,10 @@ draw_pattern_button(widget_st *widget)
 
     int idx = widget->tag1;
 
-    if (widget->tag1 == 0) {
-        gui_surface_draw_rect(sf, rect, COLOR_WIDGET_BG);
-    } else {
+    if (patterns[idx]) {
         gui_surface_draw_pattern_rel(sf, rect, patterns[idx], COLOR_BORDER, COLOR_WIDGET_BG);
+    } else {
+        gui_surface_draw_rect(sf, rect, COLOR_WIDGET_BG);
     }
 
     if (is_active) {
