@@ -60,25 +60,6 @@ file_lookup(const char *name)
 }
 
 static void
-file_dump(file_st *file)
-{
-    static char size_buf[10];
-    int show_kb = (file->size >> 10) > 4;
-
-    snprintf(size_buf, sizeof(size_buf), "%u %s",
-        show_kb ? (file->size >> 10) : file->size,
-        show_kb ? "KB" : "B"
-    );
-
-    krn_debug_printf(" - %s: %08x (%s, %s)\n",
-        file->name,
-        (uint32_t)file->addr,
-        size_buf,
-        file_type_names[file->type]
-    );
-}
-
-static void
 file_init(file_st *file)
 {
     if (file->type == FILE_TYPE_SONG) {
@@ -86,23 +67,33 @@ file_init(file_st *file)
     }
 }
 
+static void
+file_init_group(const char *label, file_st *files, size_t count)
+{
+    size_t i;
+    size_t total_size = 0;
+    int show_kb;
+
+    for (i = 0; i < count; ++i) {
+        file_init(&files[i]);
+        total_size += files[i].size;
+    }
+
+    show_kb = (total_size >> 10) > 4;
+
+    krn_debug_printf("%s files: %u (%u %s)\n",
+        label,
+        count,
+        show_kb ? (total_size >> 10) : total_size,
+        show_kb ? "KB" : "B"
+    );
+}
+
 global void
 file_init_all(void)
 {
     system_info_st *si = &krn_system_info;
-    size_t i;
 
-    krn_debug_printf("Initrd files:%s", si->initrd_files_count ? "\n" : " none\n");
-
-    for (i = 0; i < si->initrd_files_count; ++i) {
-        file_dump(&si->initrd_files[i]);
-        file_init(&si->initrd_files[i]);
-    }
-
-    krn_debug_printf("Built-in files:%s", builtin_files_count ? "\n" : " none\n");
-
-    for (i = 0; i < builtin_files_count; ++i) {
-        file_dump(&builtin_files[i]);
-        file_init(&builtin_files[i]);
-    }
+    file_init_group("Initrd", si->initrd_files, si->initrd_files_count);
+    file_init_group("Built-in", builtin_files, builtin_files_count);
 }
