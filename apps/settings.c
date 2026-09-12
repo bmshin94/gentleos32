@@ -275,6 +275,13 @@ set_wallpaper(bitmap_st *bitmap)
         set_desktop_color1(0);
     }
 
+    /* Patterns usually work best with colors from the current theme */
+    if (bitmap && gui_wm_is_valid_pattern(bitmap)) {
+        gui_theme_set(gui_theme.index);
+        set_desktop_color1(gui_theme.desktop);
+        set_desktop_color2(gui_theme.desktop_alt);
+    }
+
     select_active_pattern_button();
     select_active_wallpaper_item();
 
