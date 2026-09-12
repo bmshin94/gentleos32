@@ -65,7 +65,6 @@ SONG_SRCS       := $(wildcard assets/songs/*.musicxml)
 SONG_OBJS       := $(patsubst %.musicxml,$(BUILDDIR)/%.spk,$(SONG_SRCS))
 
 INITRD_OBJS     := $(BASEDIR)/vendor/misc/Dachshund.png \
-                   $(BASEDIR)/vendor/misc/Mondrian.png \
                    $(BASEDIR)/vendor/misc/Beastie.png
 
 OBJDIRS := $(addprefix $(BUILDDIR)/,$(KERNEL_SUBDIRS)) \
