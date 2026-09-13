@@ -7,7 +7,7 @@
   <identification>
     <encoding>
       <software>MuseScore Studio 4.7.4</software>
-      <encoding-date>2026-08-31</encoding-date>
+      <encoding-date>2026-09-12</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="no"/>
@@ -21,7 +21,7 @@
     </identification>
   <part-list>
     <score-part id="P1">
-      <part-name>Speaker</part-name>
+      <part-name>PC Speaker</part-name>
       <score-instrument id="P1-I1">
         <instrument-name></instrument-name>
         <instrument-sound>keyboard.piano.grand</instrument-sound>
@@ -899,6 +899,18 @@
           </notations>
         </note>
       <note>
+        <grace slash="yes"/>
+        <pitch>
+          <step>G</step>
+          <alter>1</alter>
+          <octave>5</octave>
+          </pitch>
+        <voice>1</voice>
+        <type>64th</type>
+        <accidental>sharp</accidental>
+        <stem>up</stem>
+        </note>
+      <note>
         <pitch>
           <step>A</step>
           <octave>5</octave>
@@ -915,6 +927,17 @@
           </notations>
         </note>
       <note>
+        <grace slash="yes"/>
+        <pitch>
+          <step>G</step>
+          <alter>1</alter>
+          <octave>5</octave>
+          </pitch>
+        <voice>1</voice>
+        <type>64th</type>
+        <stem>up</stem>
+        </note>
+      <note>
         <pitch>
           <step>A</step>
           <octave>5</octave>
@@ -929,6 +952,17 @@
             <staccato/>
             </articulations>
           </notations>
+        </note>
+      <note>
+        <grace slash="yes"/>
+        <pitch>
+          <step>G</step>
+          <alter>1</alter>
+          <octave>5</octave>
+          </pitch>
+        <voice>1</voice>
+        <type>64th</type>
+        <stem>up</stem>
         </note>
       <note>
         <pitch>
@@ -1035,6 +1069,7 @@
         <duration>6</duration>
         <voice>1</voice>
         <type>32nd</type>
+        <accidental>natural</accidental>
         <stem>down</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
@@ -1166,6 +1201,11 @@
         <accidental>sharp</accidental>
         <stem>down</stem>
         <beam number="1">begin</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -1262,17 +1302,15 @@
           <step>F</step>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -1369,17 +1407,15 @@
           <step>E</step>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -1476,17 +1512,15 @@
           <step>F</step>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -4419,6 +4453,11 @@
         <accidental>sharp</accidental>
         <stem>down</stem>
         <beam number="1">begin</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -4515,17 +4554,15 @@
           <step>F</step>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -4622,17 +4659,15 @@
           <step>E</step>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -4765,17 +4800,15 @@
           <step>F</step>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6352,6 +6385,11 @@
         <type>eighth</type>
         <stem>down</stem>
         <beam number="1">begin</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6697,6 +6735,11 @@
         <stem>down</stem>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6709,6 +6752,11 @@
         <stem>down</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6721,6 +6769,11 @@
         <stem>down</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6733,6 +6786,11 @@
         <stem>down</stem>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6745,6 +6803,11 @@
         <stem>down</stem>
         <beam number="1">begin</beam>
         <beam number="2">begin</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6757,6 +6820,11 @@
         <stem>down</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6769,6 +6837,11 @@
         <stem>down</stem>
         <beam number="1">continue</beam>
         <beam number="2">continue</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6781,6 +6854,11 @@
         <stem>down</stem>
         <beam number="1">end</beam>
         <beam number="2">end</beam>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6838,18 +6916,16 @@
           <alter>1</alter>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <accidental>sharp</accidental>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -6982,17 +7058,15 @@
           <step>D</step>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -7125,18 +7199,16 @@
           <alter>1</alter>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <accidental>sharp</accidental>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -11268,17 +11340,15 @@
           <step>D</step>
           <octave>5</octave>
           </pitch>
-        <duration>18</duration>
+        <duration>24</duration>
         <voice>1</voice>
-        <type>16th</type>
-        <dot/>
+        <type>eighth</type>
         <stem>down</stem>
-        </note>
-      <note>
-        <rest/>
-        <duration>6</duration>
-        <voice>1</voice>
-        <type>32nd</type>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <pitch>
@@ -14742,6 +14812,11 @@
         <voice>1</voice>
         <type>eighth</type>
         <stem>down</stem>
+        <notations>
+          <articulations>
+            <staccato/>
+            </articulations>
+          </notations>
         </note>
       <note>
         <rest/>
