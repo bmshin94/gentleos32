@@ -157,7 +157,7 @@ gui_fb_draw_pixelart(rect_st rect, bitmap_st *bitmap)
     int y, row_h;
 
     /* Draw grid lines in advance */
-    gui_fb_draw_rect(rect, COLOR_DESKTOP, 0);
+    gui_fb_draw_rect(rect, 0, 0);
 
     /* Iterate over all rows since they have different heights, but break early */
     first_row = 0;
